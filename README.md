@@ -1,4 +1,4 @@
-# Getting Started
+# MovieFo App
 
 ![alt text](image.png)
 
