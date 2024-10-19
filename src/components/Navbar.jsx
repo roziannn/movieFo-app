@@ -1,6 +1,8 @@
 import { Navbar, Dropdown, DarkThemeToggle } from "flowbite-react";
 import { TextInput } from "flowbite-react";
 
+import { BrowserRouter as Link } from "react-router-dom";
+
 const Nav = () => {
   return (
     <>
@@ -14,27 +16,27 @@ const Nav = () => {
         </div>
         <Navbar.Collapse className="">
           <Navbar.Brand href="#">
-            <span className="self-center whitespace-nowrap text-2xl font-semibold  dark:text-white">MovieInfo.db</span>
+            <span className="self-center whitespace-nowrap text-2xl font-semibold  dark:text-white"> MovieFo </span>
           </Navbar.Brand>
+          {/* <p className="text-xl mt-1 cursor-pointer dark:text-white">For You</p> */}
           <div className="absoulte left-0 mt-1">
-            <Dropdown label={<span className="text-xl dark:text-white">Movies</span>} inline>
-              <Dropdown.Item className="text-lg pr-20">Upcoming</Dropdown.Item>
+            <Dropdown label={<span className="text-xl dark:text-white"> Movies </span>} inline>
+              <Dropdown.Item className="text-lg pr-20" to="">
+                <Link to="/movie/upcoming">Upcoming</Link>
+              </Dropdown.Item>
               <Dropdown.Item className="text-lg">Popular🔥</Dropdown.Item>
               <Dropdown.Item className="text-lg">Top Rated</Dropdown.Item>
               <Dropdown.Item className="text-lg">Now Playing</Dropdown.Item>
             </Dropdown>
           </div>
           <div className="absoulte left-0 mt-1">
-            <Dropdown label={<span className="text-xl dark:text-white">TV Shows</span>} inline>
-              <Dropdown.Item className="text-lg pr-20">Upcoming</Dropdown.Item>
-              <Dropdown.Item className="text-lg">Popular🔥</Dropdown.Item>
-              <Dropdown.Item className="text-lg">Top Rated</Dropdown.Item>
-              <Dropdown.Item className="text-lg">Now Playing</Dropdown.Item>
+            <Dropdown label={<span className="text-xl dark:text-white"> TV Shows </span>} inline>
+              <Dropdown.Item className="text-lg pr-20"> Airing Today </Dropdown.Item>
+              <Dropdown.Item className="text-lg"> Popular🔥 </Dropdown.Item>
+              <Dropdown.Item className="text-lg"> Top Rated </Dropdown.Item>
+              <Dropdown.Item className="text-lg"> Now Playing </Dropdown.Item>
             </Dropdown>
           </div>
-          <Navbar.Link className="text-xl mt-1 cursor-pointer" active>
-            For You
-          </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </>
