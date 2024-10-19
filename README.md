@@ -1,6 +1,6 @@
 # MovieFo App
 
-![alt text](image.png)
+![alt text](public/moviefo.png)
 
 This project was made with ReactJs
 
