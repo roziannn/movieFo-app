@@ -1,5 +1,7 @@
 # Getting Started
 
+![alt text](image.png)
+
 This project was made with ReactJs
 
 ## API Docs
@@ -46,3 +48,9 @@ Installs Moment.js, a library used to manipulate, format, and display dates and 
 ### `npm i axios`
 
 Installs Axios, a promise-based HTTP library used for making HTTP requests (GET, POST, PUT, etc.) from a React application to a server or API.
+
+## Screenshoot
+
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
