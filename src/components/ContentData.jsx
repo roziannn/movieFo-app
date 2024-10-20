@@ -6,7 +6,7 @@ import { Card } from "flowbite-react";
 import StarIcon from "../star.svg";
 import moment from "moment";
 
-const ContentData = ({ searchMovie }) => {
+const ContentData = ({ searchMovie, keyword }) => {
   const { type, category } = useParams();
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
@@ -62,9 +62,7 @@ const ContentData = ({ searchMovie }) => {
     <div>
       <h1 className="text-2xl font-semibold dark:text-white">
         <div className="flex justify-between">
-          <div className="text-black dark:text-white">
-            {type.toUpperCase()} / {category.replace("_", " ")}
-          </div>
+          <div className="text-black dark:text-white">{searchMovie && searchMovie.length > 0 ? `Search Results for "${keyword}"` : `${type.toUpperCase()} / ${category.replace("_", " ")}`}</div>
           <div className="text-xl text-gray-500 dark:text-gray-300 font-normal"> Page {page}</div>
         </div>
       </h1>

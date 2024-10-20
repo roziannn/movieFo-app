@@ -79,7 +79,7 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Trending searchMovie={resultMovie} keyword={keyword} />} />
 
-            <Route path="/:type/:category" element={<ContentData searchMovie={resultMovie} />} />
+            <Route path="/:type/:category" element={<ContentData searchMovie={resultMovie} keyword={keyword} />} />
           </Routes>
         </main>
       </div>
