@@ -99,7 +99,7 @@ const ContentData = ({ searchMovie }) => {
                 <div className="flex justify-between">
                   <p className="font-normal text-gray-700 dark:text-gray-400"> {moment(item.release_date).format(" MMM Y")} </p>
                   <p className="flex font-normal text-gray-700 dark:text-gray-400">
-                    <img src={StarIcon} alt="Star Rating Icon" style={{ width: "17px", height: "22px", marginRight: "5px" }} /> <span className="Rate">{item.vote_average.toFixed(2)}</span>
+                    <img src={StarIcon} alt="Star Rating Icon" style={{ width: "17px", height: "22px", marginRight: "5px" }} /> <span className="Rate">{item.vote_average}</span>
                   </p>
                 </div>
                 {/* <h3>{item.title || item.name}</h3>
