@@ -8,6 +8,11 @@ export const trending = async (limit = 25) => {
   return trending.data.results.slice(0, limit);
 };
 
+export const searchMovie = async (q) => {
+  const search = await axios.get(`${baseUrl}/search/multi?query=${q}&page=1&api_key=${apiKey}`);
+  return search.data;
+};
+
 export const fetchData = async (type, category, page = 1) => {
   try {
     const response = await axios.get(`${baseUrl}/${type}/${category}`, {

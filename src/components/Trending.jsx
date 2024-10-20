@@ -6,7 +6,7 @@ import StarIcon from "../star.svg";
 
 import moment from "moment";
 
-const Trending = () => {
+const Trending = ({ searchMovie, keyword }) => {
   const [movies, setMovies] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -23,16 +23,18 @@ const Trending = () => {
       const trendingMovies = await trending();
       setMovies(trendingMovies);
     };
-    console.log(`film:`, movies);
 
     getTrendingMovies();
   }, []);
 
+  const dataToRender = searchMovie && searchMovie.length > 0 ? searchMovie : movies;
+
   return (
     <div>
-      <h1 className="text-2xl font-semibold dark:text-white">All Trending This Week</h1>
+      {/* <h1 className="text-3xl font-semibold dark:text-white">All Trending This Week</h1> */}
+      <h1 className="text-3xl font-semibold dark:text-white">{searchMovie && searchMovie.length > 0 ? `Search Results for "${keyword}"` : "All Trending This Week"}</h1>
       <div className="grid mt-5 mb-14 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 cursor-pointer">
-        {movies.map((movie, i) => (
+        {dataToRender.map((movie, i) => (
           <Card
             key={i}
             className={`max-w-sm mx-auto shadow-none transition-shadow duration-300 hover:shadow-lg 

@@ -1,21 +1,39 @@
 import React from "react";
+import { useState } from "react";
 import ContentData from "./components/ContentData";
+import Trending from "./components/Trending";
+
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from "react-router-dom";
 import "./App.css";
 
 import { Dropdown, DarkThemeToggle, TextInput, Navbar } from "flowbite-react";
-import Nav from "./components/Navbar";
-import Trending from "./components/Trending";
+import { searchMovie } from "./api";
 
 const App = () => {
+  const [resultMovie, setSearchMovie] = useState([]);
+  const [keyword, setKeyword] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+
+  const search = async (q) => {
+    setKeyword(q);
+    if (q.length > 2) {
+      const query = await searchMovie(q);
+      setSearchMovie(query.results);
+      setIsSearching(true);
+    } else {
+      setSearchMovie([]);
+      setIsSearching(false);
+    }
+  };
+
   return (
     <Router>
-      <div className="relative container mx-auto dark:bg-black py-24">
+      <div className="relative container mx-auto dark:bg-black pt-24 pb-1">
         <Navbar className="fixed top-0 left-0 flex w-full border-b border-gray-200 backdrop-opacity-10 backdrop-blur dark:bg-black/90 bg-white/90 lg:p-4">
           <div className="flex md:order-2 justify-between lg:gap-0 gap-5">
             <Navbar.Toggle />
             <div className="lg:w-80 mr-5">
-              <TextInput id="base" placeholder="Search a movie or tv show here..." type="text" sizing="md" />
+              <TextInput id="base" placeholder="Search a movie or tv show here..." type="text" sizing="md" onChange={({ target }) => search(target.value)} />
             </div>
             <DarkThemeToggle />
           </div>
@@ -57,11 +75,11 @@ const App = () => {
             </div>
           </Navbar.Collapse>
         </Navbar>
-        <main>
+        <main className="lg:mt-5">
           <Routes>
-            <Route exact path="/" element={<Trending />} />
+            <Route exact path="/" element={<Trending searchMovie={resultMovie} keyword={keyword} />} />
 
-            <Route path="/:type/:category" element={<ContentData />} />
+            <Route path="/:type/:category" element={<ContentData searchMovie={resultMovie} />} />
           </Routes>
         </main>
       </div>

@@ -14,3 +14,7 @@ p {
 * {
   @apply transition-colors duration-500;
 }
+
+main {
+  min-height: 100vh;
+}

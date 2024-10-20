@@ -6,7 +6,7 @@ import { Card } from "flowbite-react";
 import StarIcon from "../star.svg";
 import moment from "moment";
 
-const ContentData = () => {
+const ContentData = ({ searchMovie }) => {
   const { type, category } = useParams();
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
@@ -14,18 +14,14 @@ const ContentData = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    setIsVisible(false); // reset visibility
+    setIsLoading(true); // start loading state
+
+    // loading delay
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
+    }, 1000);
+  }, [type, category, page]); // depend on type and category
 
   useEffect(() => {
     const getContent = async () => {
@@ -36,17 +32,40 @@ const ContentData = () => {
     getContent();
   }, [type, category, page]);
 
-  const handleNextPage = () => setPage(page + 1);
-  const handlePrevPage = () => setPage(page > 1 ? page - 1 : 1);
+  // visibility effect after data loaded
+  useEffect(() => {
+    if (!isLoading) {
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
+
+  const handlePrevPage = async () => {
+    if (page > 1) {
+      setIsLoading(true);
+      setPage(page - 1);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleNextPage = async () => {
+    setIsLoading(true);
+    setPage(page + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const dataToRender = searchMovie && searchMovie.length > 0 ? searchMovie : content;
 
   return (
     <div>
       <h1 className="text-2xl font-semibold dark:text-white">
         <div className="flex justify-between">
           <div className="text-black dark:text-white">
-            {type.toUpperCase()}- {category.replace("_", " ")}
+            {type.toUpperCase()} / {category.replace("_", " ")}
           </div>
-          <div className="text-black dark:text-white">(Page {page})</div>
+          <div className="text-xl text-gray-500 dark:text-gray-300 font-normal"> Page {page}</div>
         </div>
       </h1>
 
@@ -66,8 +85,8 @@ const ContentData = () => {
                 <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
               </div>
             ))
-          : content &&
-            content.map((item) => (
+          : dataToRender &&
+            dataToRender.map((item) => (
               <Card
                 className={`max-w-sm mx-auto shadow-none transition-shadow duration-300 hover:shadow-lg 
             dark:hover:shadow-blue-800 hover:shadow-gray-400 ${isVisible ? "visible" : ""}`}
@@ -80,7 +99,7 @@ const ContentData = () => {
                 <div className="flex justify-between">
                   <p className="font-normal text-gray-700 dark:text-gray-400"> {moment(item.release_date).format(" MMM Y")} </p>
                   <p className="flex font-normal text-gray-700 dark:text-gray-400">
-                    <img src={StarIcon} alt="Star Rating Icon" style={{ width: "17px", height: "22px", marginRight: "5px" }} /> <span className="Rate"> {item.vote_average}</span>
+                    <img src={StarIcon} alt="Star Rating Icon" style={{ width: "17px", height: "22px", marginRight: "5px" }} /> <span className="Rate">{item.vote_average.toFixed(2)}</span>
                   </p>
                 </div>
                 {/* <h3>{item.title || item.name}</h3>
@@ -88,8 +107,7 @@ const ContentData = () => {
               </Card>
             ))}
       </div>
-      <nav className="flex items-center gap-x-4 min-w-max">
-        {/* Previous Button */}
+      <nav className="flex justify-center items-center gap-x-4 min-w-max my-5">
         <button onClick={handlePrevPage} disabled={page === 1} className={`text-gray-500 hover:text-gray-900 p-2 inline-flex items-center md:mr-8 mr-1 ${page === 1 ? "cursor-not-allowed opacity-50" : ""}`}>
           <span className="w-10 h-10 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-gray-200">
             <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -98,12 +116,10 @@ const ContentData = () => {
           </span>
         </button>
 
-        {/* Page Number */}
         <a className="w-10 h-10 bg-transparent text-gray-500 p-2 justify-center inline-flex items-center rounded-full transition-all duration-150 hover:text-indigo-600" aria-current="page">
           {page}
         </a>
 
-        {/* Next Button */}
         <button onClick={handleNextPage} className="text-gray-500 hover:text-gray-900 p-2 inline-flex items-center md:ml-8 ml-1">
           <span className="w-10 h-10 rounded-full transition-all duration-150 flex justify-center items-center hover:border hover:border-gray-200">
             <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
