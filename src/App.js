@@ -42,7 +42,7 @@ const App = () => {
               <span className="self-center whitespace-nowrap text-2xl font-semibold  dark:text-white"> MovieFo </span>
             </Navbar.Brand>
             <div className="absoulte left-0 mt-1">
-              <Dropdown label={<span className="text-xl dark:text-white"> Movies </span>} inline>
+              <Dropdown label={<span className="text-xl dark:text-white lg:my-0 my-5"> Movies </span>} inline>
                 <Dropdown.Item className="text-lg" to="">
                   <Link to="/movie/upcoming">Upcoming</Link>
                 </Dropdown.Item>

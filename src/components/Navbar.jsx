@@ -20,7 +20,7 @@ const Nav = () => {
           </Navbar.Brand>
           {/* <p className="text-xl mt-1 cursor-pointer dark:text-white">For You</p> */}
           <div className="absoulte left-0 mt-1">
-            <Dropdown label={<span className="text-xl dark:text-white"> Movies </span>} inline>
+            <Dropdown label={<span className="text-xl dark:text-white my-5"> Movies </span>} inline>
               <Dropdown.Item className="text-lg pr-20" to="">
                 <Link to="/movie/upcoming">Upcoming</Link>
               </Dropdown.Item>
@@ -29,7 +29,7 @@ const Nav = () => {
               <Dropdown.Item className="text-lg">Now Playing</Dropdown.Item>
             </Dropdown>
           </div>
-          <div className="absoulte left-0 mt-1">
+          <div className="absoulte left-0">
             <Dropdown label={<span className="text-xl dark:text-white"> TV Shows </span>} inline>
               <Dropdown.Item className="text-lg pr-20"> Airing Today </Dropdown.Item>
               <Dropdown.Item className="text-lg"> Popular🔥 </Dropdown.Item>
