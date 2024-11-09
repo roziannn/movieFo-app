@@ -29,10 +29,10 @@ const App = () => {
 
   return (
     <Router>
-      <div className="mx-auto dark:bg-black lg:pt-24 md:pt-36 pt-20 pb-1 px-6 lg:px-28">
+      <div className="mx-auto dark:bg-black lg:pt-24 md:pt-36 pt-20 pb-1 px-6 lg:px-28 ">
         <main className="lg:mt-5">
           <Navbar className="fixed top-0 left-0 flex w-full border-0 lg:border-b border-gray-200 backdrop-opacity-10 backdrop-blur dark:bg-black/90 bg-white/90 lg:p-4  pb-3 lg:mb-0 md:pb-5">
-            <div className="flex w-full lg:w-auto md:order-2 lg:gap-0 gap-3 justify-between lg:justify-start">
+            <div className="flex w-full lg:w-auto md:order-2 px-0 lg:px-24 lg:gap-0 gap-3 justify-between lg:justify-start">
               <Navbar.Toggle />
               <div className="lg:w-80 mr-1 lg:mr-5 w-full">
                 <div class="relative">
@@ -47,7 +47,7 @@ const App = () => {
               <DarkThemeToggle />
             </div>
             <Navbar.Collapse className="p-2 lg:p-0 bg-white dark:bg-transparent w-60 lg:w-auto md:w-full md:h-auto h-screen lg:h-auto  top-0 left-0">
-              <Navbar.Brand href="/">
+              <Navbar.Brand href="/" className="px-0 lg:pl-24">
                 <img src={MovieLogo} alt="Movie Logo" width={38} className="mr-2" />
                 <span className="self-center whitespace-nowrap text-2xl font-semibold  dark:text-white"> MovieFo </span>
               </Navbar.Brand>
