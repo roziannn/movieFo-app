@@ -3,9 +3,9 @@ import axios from "axios";
 const apiKey = process.env.REACT_APP_APIKEY;
 const baseUrl = process.env.REACT_APP_BASEURL;
 
-export const trending = async (limit = 25) => {
-  const trending = await axios.get(`${baseUrl}/trending/all/week?language=en-US?page=1&api_key=${apiKey}`);
-  return trending.data.results.slice(0, limit);
+export const trending = async () => {
+  const trending = await axios.get(`${baseUrl}/trending/movie/week?language=en-US&page=1&api_key=${apiKey}`);
+  return trending.data.results;
 };
 
 export const searchMovie = async (q) => {
@@ -25,5 +25,34 @@ export const fetchData = async (type, category, page = 1) => {
   } catch (error) {
     console.error("Error fetching data:", error);
     return [];
+  }
+};
+
+export const getCredits = async (type, id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${type}/${id}/credits`, {
+      params: {
+        language: "en-US",
+        api_key: apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching credits:", error);
+    return null;
+  }
+};
+
+export const getMovieDetails = async (type, id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${type}/${id}`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
+    return null;
   }
 };
