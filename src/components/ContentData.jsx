@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../api";
 import { useParams, Link } from "react-router-dom";
-import { Card } from "flowbite-react";
 
 import StarIcon from "../star.svg";
 import moment from "moment";
@@ -57,13 +56,13 @@ const ContentData = ({ searchMovie, keyword }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const dataToRender = searchMovie && searchMovie.length > 0 ? searchMovie : content;
+  const dataToRender = content;
 
   return (
     <div className="lg:px-28 px-6 pt-0 lg:pt-10">
       <h1 className="text-2xl font-semibold dark:text-white">
         <div className=" dark:text-white flex justify-between items-center">
-          {searchMovie && searchMovie.length > 0 ? `Search Results for "${keyword}"` : `${type.charAt(0).toUpperCase() + type.slice(1)} ${category.charAt(0).toUpperCase() + category.slice(1).replace("_", " ")}`}
+          {`${type.charAt(0).toUpperCase() + type.slice(1)} ${category.charAt(0).toUpperCase() + category.slice(1).replace("_", " ")}`}
           <div className="text-lg text-gray-500 dark:text-gray-300 font-normal"> Page {page}</div>
         </div>
       </h1>
