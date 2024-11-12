@@ -31,7 +31,7 @@ const DetailPage = () => {
 
   if (!movie) return <div>Loading...</div>;
 
-  // console.log(movie);
+  console.log(movie);
 
   return (
     <div className="bg-gray-100 dark:bg-black">

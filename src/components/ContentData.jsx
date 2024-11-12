@@ -6,7 +6,7 @@ import StarIcon from "../star.svg";
 import moment from "moment";
 import Skeleton from "./Skeleton";
 
-const ContentData = ({ searchMovie, keyword }) => {
+const ContentData = () => {
   const { type, category } = useParams();
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);

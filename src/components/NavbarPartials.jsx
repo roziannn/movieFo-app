@@ -48,35 +48,51 @@ const NavbarPartials = () => {
           <img src={MovieLogo} alt="Movie Logo" width={38} className="mr-2" />
           <span className="self-center whitespace-nowrap text-2xl font-semibold  dark:text-white"> MovieFo </span>
         </Navbar.Brand>
-        <div className="absoulte left-0 mt-1 text-black dark:text-white">
+        <div className="absoulte left-0 mt-1 text-black dark:text-white mb-5 md:mb-0 lg:mb-0">
           <Dropdown label={<span className="text-xl text-black dark:text-white lg:my-0 md:my-0 my-5"> Movies </span>} inline>
-            <Dropdown.Item className="text-lg" to="/movie/upcoming">
-              <Link to="/movie/upcoming">Upcoming</Link>
+            <Dropdown.Item className="text-lg">
+              <Link to="/movie/upcoming">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> Upcoming</Navbar.Link>
+              </Link>
             </Dropdown.Item>
             <Dropdown.Item className="text-lg">
-              <Link to="/movie/popular">Popular</Link>
+              <Link to="/movie/popular">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> Popular</Navbar.Link>
+              </Link>
             </Dropdown.Item>
             <Dropdown.Item className="text-lg">
-              <Link to="/movie/top_rated">Top Rated</Link>
+              <Link to="/movie/top_rated">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> Top Rated</Navbar.Link>
+              </Link>
             </Dropdown.Item>
             <Dropdown.Item className="text-lg">
-              <Link to="/movie/now_playing">Now Playing</Link>
+              <Link to="/movie/now_playing">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> Now Playing</Navbar.Link>
+              </Link>
             </Dropdown.Item>
           </Dropdown>
         </div>
         <div className="absoulte left-0 mt-1 text-black dark:text-white">
           <Dropdown label={<span className="text-xl text-black dark:text-white"> TV Shows </span>} inline>
             <Dropdown.Item className="text-lg">
-              <Link to="/tv/airing_today">Airing Today</Link>
+              <Link to="/tv/airing_today">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> Airing Today</Navbar.Link>
+              </Link>
             </Dropdown.Item>
             <Dropdown.Item className="text-lg">
-              <Link to="/tv/popular">Popular</Link>
+              <Link to="/tv/popular">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> Popular Show</Navbar.Link>
+              </Link>
             </Dropdown.Item>
             <Dropdown.Item className="text-lg">
-              <Link to="/tv/on_the_air">On TV</Link>
+              <Link to="/tv/on_the_air">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> On The Air TV</Navbar.Link>
+              </Link>
             </Dropdown.Item>
             <Dropdown.Item className="text-lg">
-              <Link to="/tv/top_rated">Top Rated</Link>
+              <Link to="/tv/top_rated">
+                <Navbar.Link className="py-0 text-lg text-gray-700 dark:text-gray-300 cursor-pointer"> Top Rated</Navbar.Link>
+              </Link>
             </Dropdown.Item>
           </Dropdown>
         </div>
