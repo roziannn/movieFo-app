@@ -22,7 +22,7 @@ const Trending = ({ searchMovie, keyword, loadingBarRef }) => {
       } finally {
         setIsLoading(false);
         setTimeout(() => setIsVisible(true), 100);
-        loadingBarRef.current?.complete(); // Complete loading bar
+        loadingBarRef.current?.complete(); // complete loading bar
       }
     };
 

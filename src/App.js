@@ -22,9 +22,9 @@ const App = () => {
           <NavbarPartials />
           <Routes>
             <Route exact path="/" element={<Trending loadingBarRef={loadingBarRef} />} />
-            <Route path="/search" element={<SearchFeed />} />
-            <Route path="/:type/:category" element={<ContentData />} />
-            <Route path="/:type/detail/:id" element={<DetailPage />} />
+            <Route path="/search" element={<SearchFeed loadingBarRef />} />
+            <Route path="/:type/:category" element={<ContentData loadingBarRef />} />
+            <Route path="/:type/detail/:id" element={<DetailPage loadingBarRef />} />
           </Routes>
         </main>
       </div>
