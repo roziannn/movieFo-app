@@ -5,12 +5,14 @@ import CreditCast from "./CreditCast";
 import GenreBadge from "./GenreBadge";
 import BackdropHeader from "./BackdropHeader";
 
-import { getCredits, getMovieDetails } from "../api";
+import { getCredits, getMovieDetails, getPreviewVideo } from "../api";
+import PreviewVideos from "./PreviewVideos";
 
 const DetailPage = ({ loadingBarRef }) => {
   const { id, type } = useParams();
   const [movie, setMovie] = useState(null);
   const [credit, setCredit] = useState([]);
+  const [previewVideo, setPreviewVideo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -20,10 +22,11 @@ const DetailPage = ({ loadingBarRef }) => {
       loadingBarRef.current?.continuousStart(); // start loading bar
 
       try {
-        const [movieData, creditData] = await Promise.all([getMovieDetails(type, id), getCredits(type, id)]);
+        const [movieData, creditData, previewData] = await Promise.all([getMovieDetails(type, id), getCredits(type, id), getPreviewVideo(type, id)]);
 
         setMovie(movieData);
         setCredit(creditData);
+        setPreviewVideo(previewData);
       } catch (error) {
         console.error("Error fetching movie details or credits:", error);
       } finally {
@@ -35,6 +38,8 @@ const DetailPage = ({ loadingBarRef }) => {
 
     fetchMovieDetailsAndCredits();
   }, [id, type, loadingBarRef]);
+
+  // console.log(previewVideo);
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -62,6 +67,7 @@ const DetailPage = ({ loadingBarRef }) => {
           </div>
         </div>
         <CreditCast credit={credit} />
+        <PreviewVideos previewVideo={previewVideo} />
       </div>
     </div>
   );

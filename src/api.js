@@ -56,3 +56,17 @@ export const getMovieDetails = async (type, id) => {
     return null;
   }
 };
+
+export const getPreviewVideo = async (type, id) => {
+  try {
+    const response = await axios.get(`${baseUrl}/${type}/${id}/videos`, {
+      params: {
+        api_key: apiKey,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
+    return null;
+  }
+};
