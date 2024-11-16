@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import ContentData from "./components/ContentData";
 import Trending from "./components/Trending";
 import DetailPage from "./components/DetailPage";
@@ -21,7 +21,7 @@ const App = () => {
         <main>
           <NavbarPartials />
           <Routes>
-            <Route exact path="/" element={<Trending />} />
+            <Route exact path="/" element={<Trending loadingBarRef={loadingBarRef} />} />
             <Route path="/search" element={<SearchFeed />} />
             <Route path="/:type/:category" element={<ContentData />} />
             <Route path="/:type/detail/:id" element={<DetailPage />} />
