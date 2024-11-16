@@ -6,7 +6,7 @@ import StarIcon from "../star.svg";
 import moment from "moment";
 import Skeleton from "./Skeleton";
 
-const ContentData = () => {
+const ContentData = ({ loadingBarRef }) => {
   const { type, category } = useParams();
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
@@ -16,12 +16,13 @@ const ContentData = () => {
   useEffect(() => {
     setIsVisible(false); // reset visibility
     setIsLoading(true); // start loading state
-
+    loadingBarRef.current?.continuousStart();
     // loading delay
     setTimeout(() => {
       setIsLoading(false);
+      loadingBarRef.current?.complete();
     }, 1000);
-  }, [type, category, page]); // depend on type and category
+  }, [type, category, page, loadingBarRef]); // depend on type and category
 
   useEffect(() => {
     const getContent = async () => {

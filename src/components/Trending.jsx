@@ -29,8 +29,6 @@ const Trending = ({ searchMovie, keyword, loadingBarRef }) => {
     fetchTrendingMovies();
   }, [loadingBarRef]);
 
-  const dataToRender = searchMovie && searchMovie.length > 0 ? searchMovie : movies;
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -39,7 +37,7 @@ const Trending = ({ searchMovie, keyword, loadingBarRef }) => {
     <div className="lg:px-28 px-6 pt-0 lg:pt-10">
       <h1 className="text-2xl font-semibold dark:text-white">{searchMovie && searchMovie.length > 0 ? `Search Results for "${keyword}"` : "All Trending This Week"}</h1>
       <div className="grid mt-5 mb-14 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 cursor-pointer">
-        {dataToRender.map((movie, i) => (
+        {movies.map((movie, i) => (
           <Link key={i} to={`/${movie.media_type}/detail/${movie.id}`} className={`max-w-sm mx-auto shadow-none border-0 transition-shadow mb-4 duration-300 ${isVisible ? "visible" : ""}`}>
             <img src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`} alt={movie.title || movie.name} className="w-full sm:w-64 md:w-72 lg:w-80 h-auto rounded-lg" />
             <div className="p-2">

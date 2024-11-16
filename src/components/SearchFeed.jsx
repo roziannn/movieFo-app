@@ -6,7 +6,7 @@ import StarIcon from "../star.svg";
 import moment from "moment";
 import Skeleton from "./Skeleton";
 
-const SearchFeed = () => {
+const SearchFeed = ({ loadingBarRef }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const keyword = queryParams.get("q");
@@ -14,15 +14,16 @@ const SearchFeed = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
     if (keyword) {
       setIsLoading(true);
+      loadingBarRef.current?.continuousStart();
       searchMovie(keyword)
         .then((query) => {
           setSearchResults(query.results);
           setIsLoading(false);
+          loadingBarRef.current?.complete(); // complete loading bar
         })
         .catch(() => {
           setIsLoading(false);
