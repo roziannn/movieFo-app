@@ -50,7 +50,7 @@ const DetailPage = ({ loadingBarRef }) => {
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Poster Image */}
           <div className="w-full lg:w-1/4">
-            <img src={`${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}`} alt={movie.title || movie.name} className="w-full h-auto object-cover rounded-lg shadow-xl" />
+            <img src={movie.poster_path ? `${process.env.REACT_APP_BASEIMGURL}/${movie.poster_path}` : "/placeholder-img.png"} alt={movie.title || movie.name} className="w-full h-auto object-cover rounded-lg shadow-xl" />
           </div>
 
           {/* Movie Information */}

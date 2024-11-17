@@ -46,7 +46,7 @@ const Trending = ({ searchMovie, keyword, loadingBarRef }) => {
                 <p className="font-normal text-gray-700 dark:text-gray-400">{moment(movie.release_date).format("MMM Y")}</p>
                 <p className="flex font-normal text-gray-700 dark:text-gray-400">
                   <img src={StarIcon} alt="Star Rating Icon" style={{ width: "17px", height: "22px", marginRight: "5px" }} />
-                  <span className="Rate">{movie.vote_average}</span>
+                  <span className="Rate">{Math.round(movie.vote_average * 10) / 10}</span>
                 </p>
               </div>
             </div>

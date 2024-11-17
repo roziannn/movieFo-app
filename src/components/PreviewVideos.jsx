@@ -9,7 +9,7 @@ const PreviewVideos = ({ previewVideo }) => {
           <div className="text-xl font-semibold text-gray-600 dark:text-gray-400">No Videos Found</div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 gap-8">
-            {previewVideo?.results?.slice(0, 6).map((video, i) => (
+            {previewVideo?.results?.slice(0, 4).map((video, i) => (
               <div key={i} className="flex flex-col items-center cursor-pointer">
                 <div className="rounded-lg shadow-lg overflow-hidden w-full">
                   <div className="relative w-full pb-[56.25%]">
