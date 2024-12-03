@@ -1,7 +1,5 @@
 # MovieFo App
 
-![alt text](public/moviefo.png)
-
 This project was made with ReactJs
 
 ## API Docs
@@ -48,10 +46,3 @@ Installs Moment.js, a library used to manipulate, format, and display dates and 
 ### `npm i axios`
 
 Installs Axios, a promise-based HTTP library used for making HTTP requests (GET, POST, PUT, etc.) from a React application to a server or API.
-
-## Screenshoot
-
-![alt text](public/image.png)
-![alt text](public/image-1.png)
-![alt text](public/image-2.png)
-![alt text](public/moviefo.png)
